@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar-item {
+  @apply
+    h-9
+    w-9
+    p-1
+  text-neutral
+  hover:text-primary
+    rounded-2xl
+    backdrop-blur-lg
+    cursor-pointer
+    hover:opacity-100
+    hover:scale-110
+    duration-500;
+}
+
+.navbar-item.active {
+  @apply
+    text-white
+    bg-primary
+      opacity-100
+      p-1.5
+      scale-110
+      rounded-full
+}
