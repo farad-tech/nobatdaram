@@ -1,6 +1,6 @@
 <template>
 
-  <nav class="fixed bottom-0 left-0 w-full p-4 px-12">
+  <nav class="fixed bottom-0 left-0 w-full p-3 px-12">
     <div class="rounded-full shadow-lg bg-white p-2">
       <div class="flex justify-around align-middle">
 
