@@ -1,0 +1,3 @@
+<template>
+  my store
+</template>

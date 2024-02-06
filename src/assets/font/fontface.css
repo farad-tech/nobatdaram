@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "modam";
+  src: url('./ModamFaNumLightCondensed.ttf');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "modam";
+  src: url('./ModamFaNumRegularCondensed.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "modam";
+  src: url('./ModamFaNumBoldCondensed.ttf');
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "modam";
+  src: url('./ModamFaNumBlackCondensed.ttf');
+  font-weight: 900;
+} 

@@ -22,6 +22,13 @@ export default {
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
+      mainFont: ['modam', 'Tahoma'],
+    },
+    fontWeight: {
+      light: '300',
+      normal: '400',
+      bold: '800',
+      bolder: '900',
     },
     extend: {
       spacing: {
@@ -37,5 +44,11 @@ export default {
       }
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms')({
+      strategy: 'base', // only generate global styles
+      strategy: 'class', // only generate classes
+    }),
+    // ...
+  ],
 }
