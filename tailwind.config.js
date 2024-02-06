@@ -12,13 +12,12 @@ export default {
       xl: '1440px',
     },
     colors: {
-      'primary': '#00508F',
-      'light': '#F3F1ED',
+      'primary': '#473a29',
+      'light': '#fff9f1',
       'white': '#fff',
-      'neutral': '#A7A69D',
+      'neutral': '#f4e7d7',
       'energy': '#C70039',
-      'secondary': '#689775',
-      'traditional': '#3E2723',
+      'secondary': '#f8f082',
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
