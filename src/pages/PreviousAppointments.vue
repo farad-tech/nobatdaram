@@ -1,3 +1,4 @@
 <template>
-  previous appointment
+  لیست نوبتهای قبلی
+  
 </template>

@@ -1,54 +1,65 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{vue,js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     screens: {
-      sm: '480px',
-      md: '768px',
-      lg: '976px',
-      xl: '1440px',
+      sm: "480px",
+      md: "768px",
+      lg: "976px",
+      xl: "1440px",
     },
     colors: {
-      'primary': '#473a29',
-      'light': '#fff9f1',
-      'white': '#fff',
-      'neutral': '#f4e7d7',
-      'energy': '#C70039',
-      'secondary': '#f8f082',
+      primary: "#473a29",
+      light: "#fff9f1",
+      white: "#fff",
+      neutral: "#f4e7d7",
+      energy: "#C70039",
+      secondary: "#f8f082",
+      gray: "gray",
+      success: "#5cb85c",
+      lightSuccess: "#eeffee",
+      danger: "#f02c2c",
+      warning: "#EC942C",
     },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
-      mainFont: ['modam', 'Tahoma'],
+      sans: ["Graphik", "sans-serif"],
+      serif: ["Merriweather", "serif"],
+      mainFont: ["modam", "Tahoma"],
     },
     fontWeight: {
-      light: '300',
-      normal: '400',
-      bold: '800',
-      bolder: '900',
+      light: "300",
+      normal: "400",
+      bold: "800",
+      bolder: "900",
     },
     extend: {
       spacing: {
-        '128': '32rem',
-        '144': '36rem',
+        128: "32rem",
+        144: "36rem",
       },
       borderRadius: {
-        '4xl': '2rem',
+        "4xl": "2rem",
       },
       transitionTimingFunction: {
-        'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
-        'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
-      }
-    }
+        "in-expo": "cubic-bezier(0.95, 0.05, 0.795, 0.035)",
+        "out-expo": "cubic-bezier(0.19, 1, 0.22, 1)",
+      },
+      keyframes: {
+        blinkingBorderSuccess: {
+          "0%, 100%": { outlineColor: "#5cb85c" },
+          "50%": { outlineColor: "rgba(0,0,0,0)" },
+        },
+      },
+      animation: {
+        blinkingBorderSuccess: "blinkingBorderSuccess 2s ease-in-out infinite",
+      },
+    },
   },
   plugins: [
-    require('@tailwindcss/forms')({
-      strategy: 'base', // only generate global styles
-      strategy: 'class', // only generate classes
+    require("@tailwindcss/forms")({
+      strategy: "base", // only generate global styles
+      strategy: "class", // only generate classes
     }),
     // ...
   ],
-}
+};

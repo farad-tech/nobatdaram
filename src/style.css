@@ -13,7 +13,13 @@
     @apply
       duration-300
       font-mainFont
-      font-normal
+      font-normal;
+  }
+
+  *::selection {
+    @apply
+      bg-secondary
+      text-primary;
   }
 }
 

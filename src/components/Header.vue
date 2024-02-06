@@ -8,10 +8,9 @@
           <input
             type="text"
             class="search-input"
-            placeholder="نام آرایشگاه، مطب، دفتر را جستجو کنید..." 
+            placeholder="نام آرایشگاه، مطب و ... را جستجو کنید" 
           />
         </div>
-
       <!-- </div>
     </div> -->
   </nav>
