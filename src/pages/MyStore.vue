@@ -11,14 +11,17 @@
   <Store avatar="https://ui-avatars.com/api/?name=ف&color=FFFFFF&background=C70039" name="آرایشگاه آث"
     tagline="آرایشگاه مردانه" phone="09051873547" id="1" address="گیلان، تالش، میدان امام خمینی جنب درمانگاه شفا" />
 
-  <router-link class="navbar-item" active-class="navbar-item-active" :to="{ name: 'manage-appointments' }">
+  <Map></Map>
+  
+
+  <!-- <router-link class="navbar-item" active-class="navbar-item-active" :to="{ name: 'manage-appointments' }">
     <div class="p-2 bg-white rounded-lg shadow-md flex justify-between">
       <div>
         مدیریت نوبتها (3 نوبت)
       </div>
       <ChevronLeftIcon class="h-6 w-6 text-gray"/>
     </div>
-  </router-link>
+  </router-link> -->
 
   <!--
   مدیریت خدمات <br>
@@ -36,5 +39,6 @@ import Store from './../components/Store.vue';
 import AppointmentItem from '../components/AppointmentItem.vue';
 import TitleText from '../components/TitleText.vue';
 import { RouterLink } from 'vue-router';
+import Map from '../components/Map.vue';
 
 </script>
