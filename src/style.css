@@ -59,3 +59,13 @@
 .search-bar {
   z-index: 99999;
 }
+
+.card {
+  @apply
+    my-3
+    p-2
+    flex
+  bg-white
+    rounded-2xl
+    shadow-md;
+}

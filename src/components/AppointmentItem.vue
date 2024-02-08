@@ -8,8 +8,9 @@
       <div class="flex align-middle w-3/5">
 
         <div>
-          <p class="text-gray">نوبت از</p>
-          <p class="text-lg line-clamp-1">{{ store }}</p>
+          <p class="text-gray">نوبت</p>
+          <p class="text-lg line-clamp-1">{{ name }}</p>
+          <p class="text-lg">{{ phone }}</p>
         </div>
 
       </div>
@@ -27,9 +28,10 @@
 
 <script setup>
 defineProps({
-  store: String,
+  name: String,
   date: String,
   id: String,
+  phone: String,
 })
 
 import { ClockIcon } from '@heroicons/vue/24/outline';
