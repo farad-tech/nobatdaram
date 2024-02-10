@@ -7,7 +7,7 @@
     id="1"
   />
 
-  <div class="card hover:shadow-sm hover:-translate-x-1">
+  <div class="card click">
     <ArrowLeftEndOnRectangleIcon class="h-6 w-6 text-danger" />
     <p class="text-danger">خروج از حساب کاربری</p>
   </div>

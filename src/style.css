@@ -69,3 +69,21 @@
     rounded-2xl
     shadow-md;
 }
+
+.text-input {
+  @apply
+    outline-none
+    rounded-full
+    shadow-sm
+    bg-white
+    p-2
+    w-full
+    px-4
+    focus:outline-none
+    focus:shadow-md;
+}
+
+.click:active {
+  @apply
+    scale-95;
+}

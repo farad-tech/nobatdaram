@@ -4,7 +4,7 @@
   </TitleText>
 
   <AppointmentItem name="فرهاد کرمی" phone="09305590348" date="1402 20 بهمن 16:00">
-    <XCircleIcon class="h-6 w-6" />
+    <XCircleIcon class="h-6 w-6 click" />
   </AppointmentItem>
 </template>
 

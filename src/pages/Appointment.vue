@@ -11,7 +11,7 @@
     id="1"
     phone="09123456789"  
   >
-    <XCircleIcon class="h-6 w-6" />
+    <XCircleIcon class="h-6 w-6 click" />
   </Item>
 
   <TitleText>

@@ -11,21 +11,29 @@
   <Store avatar="https://ui-avatars.com/api/?name=ف&color=FFFFFF&background=C70039" name="آرایشگاه آث"
     tagline="آرایشگاه مردانه" phone="09051873547" id="1" address="گیلان، تالش، میدان امام خمینی جنب درمانگاه شفا" />
 
-  <Map></Map>
   
 
-  <!-- <router-link class="navbar-item" active-class="navbar-item-active" :to="{ name: 'manage-appointments' }">
+  <router-link class="navbar-item" active-class="navbar-item-active" :to="{ name: 'manage-appointments' }">
     <div class="p-2 bg-white rounded-lg shadow-md flex justify-between">
       <div>
         مدیریت نوبتها (3 نوبت)
       </div>
       <ChevronLeftIcon class="h-6 w-6 text-gray"/>
     </div>
-  </router-link> -->
+  </router-link>
+
+  
+  <router-link class="navbar-item" active-class="navbar-item-active" :to="{ name: 'manage-services' }">
+    <div class="p-2 bg-white rounded-lg shadow-md flex justify-between">
+      <div>
+        مدیریت خدمات (12 خدمت)
+      </div>
+      <ChevronLeftIcon class="h-6 w-6 text-gray"/>
+    </div>
+  </router-link>
 
   <!--
   مدیریت خدمات <br>
-  آدرس با نقشه <br>
   -->
   
   <router-view></router-view>
@@ -34,11 +42,10 @@
 
 <script setup>
 
-import { ChevronLeftIcon } from '@heroicons/vue/24/outline';
+import { ChevronLeftIcon, PlusIcon } from '@heroicons/vue/24/outline';
 import Store from './../components/Store.vue';
 import AppointmentItem from '../components/AppointmentItem.vue';
 import TitleText from '../components/TitleText.vue';
 import { RouterLink } from 'vue-router';
-import Map from '../components/Map.vue';
 
 </script>

@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <PencilSquareIcon class="w-6 h-6 text-warning" />
+    <PencilSquareIcon class="w-6 h-6 text-warning click" />
 
     <div class="w-full mt-4 flex">
       <span class="block rounded-full h-12 w-12 me-4"></span>

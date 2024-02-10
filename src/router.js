@@ -4,6 +4,7 @@ import PreviousAppointments from "./pages/PreviousAppointments.vue";
 import User from "./pages/User.vue";
 import MyStore from "./pages/MyStore.vue";
 import ManageAppointments from "./pages/Store/ManageAppointments.vue";
+import ManageServices from "./pages/Store/ManageServices.vue";
 
 const routes = [
   {
@@ -34,6 +35,12 @@ const routes = [
     path: "/my-store/manage-appointments",
     component: ManageAppointments,
     name: "manage-appointments"
+  },
+
+  {
+    path: "/my-store/manage-services",
+    component: ManageServices,
+    name: "manage-services"
   }
 ];
 
