@@ -9,8 +9,8 @@
 
         <div>
           <p class="text-gray">نوبت</p>
-          <p class="text-lg line-clamp-1">{{ name }}</p>
-          <p class="text-lg">{{ phone }}</p>
+          <p class="line-clamp-1">{{ name }}</p>
+          <p v-if="phone" class="flex mt-2"><PhoneIcon class="h-5 me-1 text-gray"/><a :href="'tel:' + phone">{{ phone }}</a></p>
         </div>
 
       </div>
@@ -19,7 +19,7 @@
         <p class="text-gray flex align-middle">
           <ClockIcon class="h-6 me-1" /> <span>تاریخ</span>
         </p>
-        <p class="text-lg">{{ date }}</p>
+        <p class="">{{ date }}</p>
       </div>
     </div>
   </div>
@@ -34,5 +34,5 @@ defineProps({
   phone: String,
 })
 
-import { ClockIcon } from '@heroicons/vue/24/outline';
+import { ClockIcon, PhoneIcon } from '@heroicons/vue/24/outline';
 </script>
