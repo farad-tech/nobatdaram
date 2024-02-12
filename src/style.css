@@ -85,5 +85,6 @@
 
 .click:active {
   @apply
-    scale-95;
+    scale-95
+    shadow-none;
 }
