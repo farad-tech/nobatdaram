@@ -8,8 +8,14 @@
     <p class="text-gray">مغازه خود را اضافه کنید</p>
   </div> -->
 
-  <Store avatar="https://ui-avatars.com/api/?name=ف&color=FFFFFF&background=C70039" name="آرایشگاه آث"
-    tagline="آرایشگاه مردانه" phone="09051873547" id="1" address="گیلان، تالش، میدان امام خمینی جنب درمانگاه شفا" />
+  <Store
+    avatar="https://ui-avatars.com/api/?name=ف&color=FFFFFF&background=C70039"
+    name="آرایشگاه آث"
+    tagline="آرایشگاه مردانه"
+    phone="09051873547"
+    id="1"
+    address="گیلان، تالش، میدان امام خمینی جنب درمانگاه شفا"
+  />
 
   
 

@@ -1,19 +1,25 @@
 <template>
   <TitleText>
-    <span class="animate-ping inline-flex h-2 w-2 rounded-full bg-success opacity-75 me-2"></span>
     لیست نوبتهای حال حاضر
   </TitleText>
 
-  <Item name="آرایشگاه آث در تالش در گیلان" date="12 مهر 1402 - 16:00" id="1" phone="09123456789">
+  <!-- <Item name="آرایشگاه آث در تالش در گیلان" date="12 مهر 1402 - 16:00" id="1" phone="09123456789">
     <XCircleIcon class="h-6 w-6 click" />
-  </Item>
+  </Item> -->
+
+  <p class="mt-4 mb-10 text-sm text-center text-gray">
+    موجود نیست
+  </p>
 
   <TitleText>
     نوبتهای پرتکرار
   </TitleText>
 
-  <RepeatItem  name="آرایشگاه آث در تالش در گیلان" date="12 مهر 1402 - 16:00" id="1" phone="09123456789"/>
+  <p class="mt-4 mb-10 text-sm text-center text-gray">
+    موجود نیست
+  </p>
 
+  <!-- <RepeatItem name="آرایشگاه آث در تالش در گیلان" date="12 مهر 1402 - 16:00" id="1" phone="09123456789" /> -->
 </template>
 
 <script setup>
