@@ -13,7 +13,8 @@
     "@neshan-maps-platform/mapbox-gl-vue": "^1.0.0",
     "@neshan-maps-platform/vue3-openlayers": "^2.0.1",
     "vue": "^3.3.11",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vue3-persian-datetime-picker": "^1.2.2"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
