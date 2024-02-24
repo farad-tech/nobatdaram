@@ -15,7 +15,7 @@
 
 <script setup>
 import { RouterLink } from "vue-router";
-import Titletext from "../components/titletext.vue";
+import Titletext from "../components/TitleText.vue";
 import User from "../components/User.vue";
 
 </script>

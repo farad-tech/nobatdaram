@@ -5,8 +5,10 @@ import User from "./pages/User.vue";
 import MyStore from "./pages/MyStore.vue";
 import ManageAppointments from "./pages/Store/ManageAppointments.vue";
 import ManageServices from "./pages/Store/ManageServices.vue";
+import ClosedDays from "./pages/Store/ClosedDays.vue";
 import Stores from "./pages/Stores.vue";
 import Store from "./pages/Store.vue";
+import Login from "./pages/Login.vue";
 
 const routes = [
   {
@@ -46,6 +48,12 @@ const routes = [
   },
 
   {
+    path: "/my-store/closed-days",
+    component: ClosedDays,
+    name: "closed-days"
+  },
+
+  {
     path: "/stores",
     component: Stores,
     name: "stores",
@@ -55,6 +63,12 @@ const routes = [
     path: "/store",
     component: Store,
     name: "store",
+  },
+
+  {
+    path: "/login",
+    component: Login,
+    name: 'login',
   }
 ];
 

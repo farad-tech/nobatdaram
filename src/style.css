@@ -88,3 +88,7 @@
     scale-95
     shadow-none;
 }
+
+input[type="checkbox"] {
+  @apply h-6 w-6 accent-primary;
+}

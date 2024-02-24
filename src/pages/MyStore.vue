@@ -37,6 +37,15 @@
       <ChevronLeftIcon class="h-6 w-6 text-gray"/>
     </div>
   </router-link>
+  
+  <router-link class="navbar-item" active-class="navbar-item-active" :to="{ name: 'closed-days' }">
+    <div class="p-2 bg-white rounded-lg shadow-md flex justify-between">
+      <div>
+        روزهای تعطیل (2 روز)
+      </div>
+      <ChevronLeftIcon class="h-6 w-6 text-gray"/>
+    </div>
+  </router-link>
 
   <!--
   مدیریت خدمات <br>
