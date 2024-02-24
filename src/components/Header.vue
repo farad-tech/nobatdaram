@@ -1,5 +1,5 @@
 <template>
-  <nav class="fixed top-0 left-0 w-full p-3 px-6 search-bar flex">
+  <nav v-if="authed" class="fixed top-0 left-0 w-full p-3 px-6 search-bar flex">
 
     <span class="w-1/12 flex flex-row-reverse bg-white rounded-full shadow-sm justify-center click">
       <BellIcon class="w-6 my-auto text-warning" />
@@ -37,5 +37,8 @@
 <script setup>
 
 import { MagnifyingGlassIcon, BellIcon, ArrowLeftIcon } from '@heroicons/vue/24/outline'
+import { ref } from 'vue';
+
+const authed = ref(false);
 
 </script>
