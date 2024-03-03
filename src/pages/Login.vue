@@ -22,10 +22,10 @@
 
       <label>کد تایید</label>
       <input maxlength="5" v-model="code" class="text-input border border-gray mt-3" type="text" />
-      <span class="text-sm text-danger">{{ regex }}</span>
+      <span class="text-sm text-danger">{{ code_error }}</span>
 
-      <button :disabled="!result" :class="activeButton" @click="submitStep2">
-        <span class="me-1 text-white" v-html="spinner"></span>
+      <button :class="activeButton" @click="submitStep2">
+        <span class="me-1 text-white" v-html="spinner2"></span>
         <span>ورود</span>
       </button>
     </div>
@@ -36,16 +36,24 @@
 
 <script setup>
 
+const props = defineProps({
+  APP_URL: String,
+});
+
 import { ref } from 'vue';
 import axios from 'axios';
+import router from '../router';
+
 
 const phone = ref();
 const regex = ref();
 const result = ref(false);
 const buttonClass = ref();
-const step = ref(2);
+const step = ref(1);
 const code = ref();
 const spinner = ref();
+const spinner2 = ref();
+const code_error = ref();
 
 const activeButton = 'bg-primary text-white w-full mt-7 p-2 rounded-full click';
 const disableButton = 'bg-neutral text-dark w-full mt-7 p-2 rounded-full';
@@ -118,46 +126,52 @@ function submitStep1() {
 }
 
 function submitStep2() {
-  spinner.value = '<svg class="animate-spin h-5 w-5" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M288 39.1v16.7c0 10.8 7.3 20.2 17.7 23.1C383.2 100.4 440 171.5 440 256c0 101.7-82.3 184-184 184-101.7 0-184-82.3-184-184 0-84.5 56.8-155.6 134.3-177.2C216.7 75.9 224 66.5 224 55.7V39.1c0-15.7-14.8-27.2-30-23.2C86.6 43.5 7.4 141.2 8 257.3c.7 137.1 111.5 247 248.5 246.7C393.3 503.7 504 392.8 504 256c0-115.6-79.1-212.8-186.2-240.2C302.7 11.9 288 23.5 288 39.1z"/></svg>';
 
-  // axios({
-  //   method: 'post',
 
-  //   url: 'http://127.0.0.1:8000/api/login',
+  code_error.value = '';
 
-  //   data: {
-  //     "phone_number": phone.value,
-  //   },
+  axios({
 
-  //   headers: {
-  //     "Accept": "application/json",
-  //   }
+    method: 'post',
 
-  // })
-  //   .then(function (response) {
+    url: props.APP_URL + 'api/login/check-code',
 
-  //     spinner.value = '';
+    data: {
+      "code": code.value,
+      "phone_number": phone.value,
+    },
 
-  //     if (response.status == 200) {
+    headers: {
+      "Accept": "application/json",
+    }
+  })
+    .then(function (response) {
 
-  //       if (response.data.status) {
-  //         step.value = 2;
-  //       }
+      spinner.value = '';
 
-  //     } else {
+      if (response.status == 200) {
 
-  //       regex.value = 'خطایی رخ داد، لطفا مجدد امتحان کنید.';
+        let access_token = response.data.message;
 
-  //     }
+        document.cookie =
+        "access_token=" + access_token + ";" + 30 * 24 * 60 * 60 + ";path=/";
 
-  //   })
-  //   .catch(function (error) {
-  //     spinner.value = '';
+        router.push({ name: 'appointment' });
 
-  //     console.log(error);
+      } else {
+        code_error.value = 'خطایی رخ داد، لطفا مجدد امتحان کنید.';
+      }
 
-  //     regex.value = 'خطایی رخ داد، لطفا مجدد امتحان کنید.';
-  //   });
+    })
+    .catch(function (error) {
+      spinner.value = '';
+
+      console.log(error);
+
+      code_error.value = 'خطایی رخ داد، لطفا مجدد امتحان کنید.';
+    });
+
+
 }
 
 </script>

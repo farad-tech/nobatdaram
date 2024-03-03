@@ -10,6 +10,8 @@ import Stores from "./pages/Stores.vue";
 import Store from "./pages/Store.vue";
 import Login from "./pages/Login.vue";
 
+const APP_URL = 'http://127.0.0.1:8000/';
+
 const routes = [
   {
     path: "/",
@@ -69,6 +71,9 @@ const routes = [
     path: "/login",
     component: Login,
     name: 'login',
+    props: {
+      'APP_URL': APP_URL,
+    }
   }
 ];
 
