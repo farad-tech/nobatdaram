@@ -9,8 +9,9 @@ import ClosedDays from "./pages/Store/ClosedDays.vue";
 import Stores from "./pages/Stores.vue";
 import Store from "./pages/Store.vue";
 import Login from "./pages/Login.vue";
+import app_url_address from "./custom-javascript/app_url_address";
 
-const APP_URL = 'http://127.0.0.1:8000/';
+const APP_URL = app_url_address();
 
 const routes = [
   {
