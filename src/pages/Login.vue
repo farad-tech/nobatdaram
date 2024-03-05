@@ -37,13 +37,12 @@
 <script setup>
 
 const props = defineProps({
-  APP_URL: String,
+  APP_URL: String
 });
 
 import { ref } from 'vue';
 import axios from 'axios';
 import router from '../router';
-
 
 const phone = ref();
 const regex = ref();
@@ -79,7 +78,6 @@ function phoneRegex() {
   }
 
 }
-
 
 function submitStep1() {
 

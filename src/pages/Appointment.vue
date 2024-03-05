@@ -27,5 +27,12 @@ import { XCircleIcon } from '@heroicons/vue/24/outline';
 import Item from './../components/AppointmentItem.vue';
 import TitleText from './../components/TitleText.vue';
 import RepeatItem from './../components/RepeatAppointmentItem.vue';
+import checkAuth from '../custom-javascript/checkAuth';
+
+const props = defineProps({
+  APP_URL: String,
+});
+
+checkAuth(props.APP_URL);
 
 </script>

@@ -1,5 +1,6 @@
 <template>
-  <nav v-if="authed" class="fixed top-0 left-0 w-full p-3 px-6 search-bar flex">
+
+  <nav v-if="headerShow" class="fixed top-0 left-0 w-full p-3 px-6 search-bar flex">
 
     <span class="w-1/12 flex flex-row-reverse bg-white rounded-full shadow-sm justify-center click">
       <BellIcon class="w-6 my-auto text-warning" />
@@ -13,7 +14,8 @@
       <input id="search" type="text" class="search-input" placeholder="نام آرایشگاه، مطب و ... را جستجو کنید" />
     </div>
 
-    <span @click="$router.go(-1)" class="w-1/12 flex flex-row-reverse bg-white rounded-full shadow-sm justify-center click">
+    <span @click="$router.go(-1)"
+      class="w-1/12 flex flex-row-reverse bg-white rounded-full shadow-sm justify-center click">
       <ArrowLeftIcon class="w-4 my-auto" />
     </span>
 
@@ -39,6 +41,12 @@
 import { MagnifyingGlassIcon, BellIcon, ArrowLeftIcon } from '@heroicons/vue/24/outline'
 import { ref } from 'vue';
 
-const authed = ref(false);
+const fullUrl = window.location.href;
+
+const headerShow = ref(true);
+
+if(fullUrl.includes('login')) {
+  headerShow.value = false;
+}
 
 </script>

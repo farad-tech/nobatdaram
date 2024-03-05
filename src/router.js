@@ -17,7 +17,7 @@ const routes = [
   {
     path: "/",
     component: Appointment,
-    name: "appointment",
+    name: "appointment"
   },
 
   {
@@ -71,10 +71,7 @@ const routes = [
   {
     path: "/login",
     component: Login,
-    name: 'login',
-    props: {
-      'APP_URL': APP_URL,
-    }
+    name: 'login'
   }
 ];
 
