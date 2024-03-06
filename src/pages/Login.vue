@@ -36,13 +36,10 @@
 
 <script setup>
 
-const props = defineProps({
-  APP_URL: String
-});
-
 import { ref } from 'vue';
 import axios from 'axios';
 import router from '../router';
+import app_url_address from '../custom-javascript/app_url_address';
 
 const phone = ref();
 const regex = ref();
@@ -53,6 +50,7 @@ const code = ref();
 const spinner = ref();
 const spinner2 = ref();
 const code_error = ref();
+const APP_URL = app_url_address();
 
 const activeButton = 'bg-primary text-white w-full mt-7 p-2 rounded-full click';
 const disableButton = 'bg-neutral text-dark w-full mt-7 p-2 rounded-full';
@@ -86,7 +84,7 @@ function submitStep1() {
   axios({
     method: 'post',
 
-    url: 'http://127.0.0.1:8000/api/login',
+    url: APP_URL + 'api/login',
 
     data: {
       "phone_number": phone.value,
@@ -132,7 +130,7 @@ function submitStep2() {
 
     method: 'post',
 
-    url: props.APP_URL + 'api/login/check-code',
+    url: APP_URL + 'api/login/check-code',
 
     data: {
       "code": code.value,
