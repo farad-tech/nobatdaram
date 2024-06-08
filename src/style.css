@@ -1,94 +1,11 @@
-@import url('./assets/font/fontface.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  html {
-    direction: rtl;
-  }
-
   * {
-    @apply
-      duration-300
-      font-mainFont
-      font-normal;
+    font-family: "Montserrat", sans-serif;
   }
-
-  *::selection {
-    @apply
-      bg-secondary
-      text-primary;
-  }
-}
-
-.navbar-item {
-  @apply
-    h-9
-    w-9
-  text-primary
-    rounded-2xl
-    backdrop-blur-lg
-    cursor-pointer
-    hover:opacity-100
-    p-1.5
-}
-
-.navbar-item-active {
-  @apply
-    bg-secondary
-      opacity-100
-      rounded-full;
-}
-
-.search-input {
-  @apply
-    outline-none
-    rounded-full
-    shadow-sm
-    bg-white
-    p-2
-    w-full
-    ps-10
-    pe-4
-    focus:outline-none
-    focus:shadow-md;
-}
-
-.search-bar {
-  z-index: 99999;
-}
-
-.card {
-  @apply
-    my-3
-    p-2
-    flex
-  bg-white
-    rounded-2xl
-    shadow-md;
-}
-
-.text-input {
-  @apply
-    outline-none
-    rounded-full
-    shadow-sm
-    bg-white
-    p-2
-    w-full
-    px-4
-    focus:outline-none
-    focus:shadow-md;
-}
-
-.click:active {
-  @apply
-    scale-95
-    shadow-none;
-}
-
-input[type="checkbox"] {
-  @apply h-6 w-6 accent-primary;
 }
