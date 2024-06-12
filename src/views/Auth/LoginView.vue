@@ -1,45 +1,30 @@
 <script setup>
-import { EyeIcon } from '@heroicons/vue/24/solid'
 import { ref } from 'vue';
+import EmailOrPhoneInput from '@/components/form/EmailOrPhone.vue';
+import PasswordInput from '@/components/form/Password.vue';
 
-const passwordInput = ref(null);
+const EmailOrPhone = ref(null);
+const Password = ref(null);
 
-function togglePasswordShow() {
-  if (passwordInput.value.getAttribute('type') == 'password') {
 
-    passwordInput.value.setAttribute('type', 'text')
 
-  } else {
-
-    passwordInput.value.setAttribute('type', 'password')
-
-  }
-}
+function formSubmit() {}
 
 </script>
 
 <template>
   <section class="h-screen">
     <div class="h-full">
-      <!-- Left column container with background-->
+      <p class=" text-red-400">باید یه حالتی ایجاد بشه وقتی در کامپوننتهای فرزند اروری باشه به والد امیت بشه و اجازه سابمیت فرم داده نشه</p>
       <div class="h-full flex items-center justify-center">
 
-        <form class="mb-12 shadow-md py-6 px-4 rounded-lg w-full">
+        <form class="mb-12 shadow-md py-6 px-4 rounded-lg w-full" @submit.prevent="formSubmit">
 
           <h1 class=" mb-10 text-xl font-bold text-center">Nobatdaram Login</h1>
 
-          <div class="mb-4">
-            <label class="mb-2">Email or Phone number</label>
-            <input type="text" class="input input-bordered w-full" />
-          </div>
+          <EmailOrPhoneInput v-model="EmailOrPhone"/>
 
-          <div class="mb-4">
-            <label class="mb-2">Password</label>
-            <div class="flex items-center justify-between">
-              <input ref="passwordInput" type="password" class="input input-bordered w-11/12" />
-              <EyeIcon @click="togglePasswordShow" class="w-6 cursor-pointer" />
-            </div>
-          </div>
+          <PasswordInput v-model="Password"/>
 
           <div class="mb-6 flex items-center justify-between">
             <!--Forgot password link-->
@@ -47,9 +32,9 @@ function togglePasswordShow() {
           </div>
 
           <!-- Login button -->
-          <div class="text-center lg:text-left">
+          <div class="text-center">
 
-            <button type="button"
+            <button type="submit"
               class="inline-block w-full rounded bg-primary px-7 pb-2 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
               data-twe-ripple-init data-twe-ripple-color="light">
               Login
