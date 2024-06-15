@@ -8,7 +8,7 @@ const props = defineProps({
   modelValue: String
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'getError']);
 
 const Password = ref(props.modelValue);
 
@@ -21,13 +21,22 @@ watch(Password, (newValue) => {
 });
 
 function validatePassword() {
-  const regex = /^.{6,}$/;;
+  const regex = /^.{6,}$/;
+  var errorObject = {};
 
   if (!regex.test(Password.value)) {
     error.value = 'Password must be at least 6 characters.';
   } else {
     error.value = '';
   }
+
+  if (error.value == '') {
+    errorObject = { Password: false };
+  } else {
+    errorObject = { Password: true };
+  }
+
+  emit('getError', errorObject);
 }
 
 </script>

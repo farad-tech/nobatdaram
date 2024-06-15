@@ -8,7 +8,7 @@ const props = defineProps({
   modelValue: String
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'getError']);
 
 const EmailOrPhone = ref(props.modelValue);
 
@@ -22,12 +22,21 @@ watch(EmailOrPhone, (newValue) => {
 
 function validateInput() {
   const regex = /(^\+[1-9]\d{1,14}$)|(^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$)/;
+  var errorObject = {};
 
   if (!regex.test(EmailOrPhone.value)) {
     error.value = 'Invalid mobile number or email address.';
   } else {
     error.value = '';
   }
+
+  if (error.value == '') {
+    errorObject = {EmailOrPhone: false};
+  } else {
+    errorObject = {EmailOrPhone: true};
+  }
+  
+  emit('getError', errorObject);
 }
 
 </script>

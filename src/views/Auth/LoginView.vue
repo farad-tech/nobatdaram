@@ -5,26 +5,66 @@ import PasswordInput from '@/components/form/Password.vue';
 
 const EmailOrPhone = ref(null);
 const Password = ref(null);
+const Errors = ref([]);
+
+function assignError(errorObject) {
+
+  if (errorObject.EmailOrPhone != undefined) {
+    if (errorObject.EmailOrPhone === true) {
+      Errors.value['EmailOrPhone'] = true;
+    } else {
+      Errors.value['EmailOrPhone'] = false;
+    }
+  }
 
 
+  if (errorObject.Password != undefined) {
+    if (errorObject.Password === true) {
+      Errors.value['Password'] = true;
+    } else {
+      Errors.value['Password'] = false;
+    }
+  }
+}
 
-function formSubmit() {}
+function formSubmit() {
+  const ErrorList = Errors.value;
+
+  if (Object.keys(ErrorList).length === 0) {
+    return;
+  } else {
+    for (const key in ErrorList) {
+      if (ErrorList.hasOwnProperty.call(ErrorList, key)) {
+        const error = ErrorList[key];
+        if (error || Password.value == null || EmailOrPhone.value == null) {
+
+          return;
+
+        }
+
+      }
+    }
+  }
+
+  alert('submit');
+}
 
 </script>
 
 <template>
   <section class="h-screen">
     <div class="h-full">
-      <p class=" text-red-400">باید یه حالتی ایجاد بشه وقتی در کامپوننتهای فرزند اروری باشه به والد امیت بشه و اجازه سابمیت فرم داده نشه</p>
+      <p class=" text-red-400">باید یه حالتی ایجاد بشه وقتی در کامپوننتهای فرزند اروری باشه به والد امیت بشه و اجازه
+        سابمیت فرم داده نشه</p>
       <div class="h-full flex items-center justify-center">
 
         <form class="mb-12 shadow-md py-6 px-4 rounded-lg w-full" @submit.prevent="formSubmit">
 
           <h1 class=" mb-10 text-xl font-bold text-center">Nobatdaram Login</h1>
 
-          <EmailOrPhoneInput v-model="EmailOrPhone"/>
+          <EmailOrPhoneInput v-model="EmailOrPhone" @getError="assignError" />
 
-          <PasswordInput v-model="Password"/>
+          <PasswordInput v-model="Password" @getError="assignError" />
 
           <div class="mb-6 flex items-center justify-between">
             <!--Forgot password link-->
