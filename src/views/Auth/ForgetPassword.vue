@@ -4,17 +4,48 @@ import EmailOrPhoneInput from '@/components/form/EmailOrPhone.vue'
 import { ref } from 'vue'
 
 const EmailOrPhone = ref(null);
+const Errors = ref([]);
+
+function assignError(errorObject) {
+
+  if (errorObject.EmailOrPhone != undefined) {
+    if (errorObject.EmailOrPhone === true) {
+      Errors.value['EmailOrPhone'] = true;
+    } else {
+      Errors.value['EmailOrPhone'] = false;
+    }
+  }
+
+}
 
 const formSubmit = () => {
-  alert(EmailOrPhone.value)
+
+  const ErrorList = Errors.value;
+
+  if (Object.keys(ErrorList).length === 0) {
+    return;
+  } else {
+    for (const key in ErrorList) {
+      if (ErrorList.hasOwnProperty.call(ErrorList, key)) {
+
+        const error = ErrorList[key];
+        if (error || EmailOrPhone.value == null) {
+
+          return;
+
+        }
+
+      }``
+    }
+  }
+
+  alert('submit');
 }
 
 </script>
 
 <template>
   <section class="h-screen">
-    <p class=" text-red-400">باید یه حالتی ایجاد بشه وقتی در کامپوننتهای فرزند اروری باشه به والد امیت بشه و اجازه
-      سابمیت فرم داده نشه</p>
     <div class="h-full">
       <div class="h-full flex items-center justify-center">
 
@@ -23,7 +54,7 @@ const formSubmit = () => {
           <h1 class=" mb-30 text-xl font-bold text-center">Nobatdaram Login</h1>
           <h2 class=" mb-10 text-lg text-center">Forget Password</h2>
 
-          <EmailOrPhoneInput v-model="EmailOrPhone" error="" />
+          <EmailOrPhoneInput v-model="EmailOrPhone" @getError="assignError" />
 
           <!-- Login button -->
           <div class="text-center lg:text-left">

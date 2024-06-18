@@ -54,8 +54,6 @@ function formSubmit() {
 <template>
   <section class="h-screen">
     <div class="h-full">
-      <p class=" text-red-400">باید یه حالتی ایجاد بشه وقتی در کامپوننتهای فرزند اروری باشه به والد امیت بشه و اجازه
-        سابمیت فرم داده نشه</p>
       <div class="h-full flex items-center justify-center">
 
         <form class="mb-12 shadow-md py-6 px-4 rounded-lg w-full" @submit.prevent="formSubmit">
