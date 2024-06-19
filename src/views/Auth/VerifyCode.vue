@@ -106,7 +106,6 @@ VerifyCodeInterval()
               Verify code
             </button>
 
-            <!-- Register link -->
             <p class="mb-0 mt-2 pt-1 text-sm font-semibold">
               <router-link :to="{ name: 'forget-password' }"
                 class="text-danger flex justify-center transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700 items-center">Back

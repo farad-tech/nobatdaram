@@ -5,7 +5,8 @@ import { ref, watch } from 'vue';
 const error = ref('');
 
 const props = defineProps({
-  modelValue: String
+  modelValue: String,
+  label: String,
 });
 
 const emit = defineEmits(['update:modelValue', 'getError']);
@@ -43,7 +44,8 @@ function validatePassword() {
 
 <template>
   <div class="mb-4">
-    <label class="mb-2">Password</label>
+    <label class="mb-2" v-if="props.label">{{props.label}}</label>
+    <label class="mb-2" v-else>Password</label>
     <div class="flex items-center justify-between">
       <input @input="validatePassword()" v-model="Password" type="password" class="input input-bordered w-full"
         placeholder="At least 6 characters" />
