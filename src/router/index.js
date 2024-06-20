@@ -3,10 +3,13 @@ import LoginView from '@/views/Auth/LoginView.vue'
 import ForgetPassword from '@/views/Auth/ForgetPassword.vue'
 import VerifyCode from '@/views/Auth/VerifyCode.vue'
 import ResetPassword from '@/views/Auth/ResetPassword.vue'
+import Profile from '@/views/Panel/Profile.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+
+    // Auth pages
     {
       path: '/login',
       name: 'login',
@@ -27,6 +30,14 @@ const router = createRouter({
       name: 'reset-password',
       component: ResetPassword
     },
+
+    // Profile pages
+    {
+      path: '/',
+      name: 'profile',
+      component: Profile
+    },
+    
   ]
 })
 
