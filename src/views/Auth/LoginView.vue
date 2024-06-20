@@ -58,7 +58,8 @@ function formSubmit() {
 
         <form class="mb-12 shadow-md py-6 px-4 rounded-lg w-full" @submit.prevent="formSubmit">
 
-          <h1 class=" mb-10 text-xl font-bold text-center">Nobatdaram Login</h1>
+          <h1 class="mb-1 text-xl font-bold text-center">Nobatdaram Login & Register</h1>
+          <p class="mb-10">You can also register into Nobatdaram with following form</p>
 
           <EmailOrPhoneInput v-model="EmailOrPhone" @getError="assignError" />
 
@@ -77,13 +78,6 @@ function formSubmit() {
               data-twe-ripple-init data-twe-ripple-color="light">
               Login
             </button>
-
-            <!-- Register link -->
-            <p class="mb-0 mt-2 pt-1 text-sm font-semibold">
-              Don't have an account?
-              <a href="#!"
-                class="text-danger transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700">Register</a>
-            </p>
           </div>
         </form>
 

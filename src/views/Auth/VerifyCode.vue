@@ -71,7 +71,6 @@ VerifyCodeInterval()
 <template>
   <section class="h-screen">
     <div class="h-full">
-      <p class=" text-red-700 ">تایمر برای ارسال مجدد کد تایید باید پیاده سازی شود</p>
       <div class="h-full flex items-center justify-center">
 
         <form class="mb-12  shadow-md py-6 px-4 rounded-lg w-full" @submit.prevent="formSubmit">
