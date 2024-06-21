@@ -1,5 +1,6 @@
 <script setup>
 import HeaderNav from '@/components/layouts/HeaderNav.vue'
+import FooterNav from '@/components/layouts/FooterNav.vue'
 import { ref } from 'vue';
 import { PencilIcon } from '@heroicons/vue/24/solid';
 
@@ -21,7 +22,7 @@ const changeMenu = (menuName) => {
 <template>
   <HeaderNav />
 
-  <div class="h-36 border-b border-neutral-600 bg-base-100 sticky top-0">
+  <div class="h-36 border-b border-neutral-600 bg-base-100 sticky z-50 top-0">
     <div class="relative h-full">
       <div class="absolute bottom-2 left-2 ">
         <p class="mb-1 flex items-center">Farhad Karami <PencilIcon class="w-4 h-4 text-warning mx-2"/></p>
@@ -46,5 +47,7 @@ const changeMenu = (menuName) => {
   <div>
     <div v-for="i in 20" class="skeleton w-full h-12 mb-2"></div>
   </div>
+
+  <FooterNav />
 
 </template>
