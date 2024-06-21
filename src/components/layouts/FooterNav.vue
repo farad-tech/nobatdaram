@@ -4,6 +4,7 @@ import { UserCircleIcon } from '@heroicons/vue/24/outline';
 
 <template>
   <div class="btm-nav sticky bottom-0">
+
     <button class="active">
       <UserCircleIcon class="h-5 w-5" />
     </button>
@@ -16,5 +17,6 @@ import { UserCircleIcon } from '@heroicons/vue/24/outline';
 
     <button>
     </button>
+
   </div>
 </template>
