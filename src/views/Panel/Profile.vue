@@ -1,6 +1,7 @@
 <script setup>
 import HeaderNav from '@/components/layouts/HeaderNav.vue'
 import FooterNav from '@/components/layouts/FooterNav.vue'
+import Avatar from '@/components/elements/Avatar.vue'
 import { ref } from 'vue';
 import { PencilIcon } from '@heroicons/vue/24/solid';
 
@@ -23,19 +24,19 @@ const changeMenu = (menuName) => {
 
   <div class=" min-h-screen">
     <HeaderNav />
-    
+
     <div class="h-36 border-b border-neutral-600 bg-base-100 sticky z-50 top-0">
       <div class="relative h-full">
         <div class="absolute bottom-2 left-2 ">
-          <p class="mb-1 flex items-center">Farhad Karami
+          <router-link :to="{ name: 'edit-profile' }" class="mb-1 flex items-center">Farhad Karami
             <PencilIcon class="w-4 h-4 text-warning mx-2" />
-          </p>
+          </router-link>
           <p class="text-sm">+989352760807</p>
-          <p class="text-sm">farhadkarami@yahoo.com</p>
+          <!-- <p class="text-sm">farhadkarami@yahoo.com</p> -->
         </div>
-        <div
-          class="w-24 h-24 rounded-full bg-neutral-400 absolute -bottom-6 right-2 flex items-center justify-center p-1">
-          <img src="#" class="block w-full h-full bg-neutral-800 rounded-full" />
+
+        <div class="rounded-full absolute -bottom-6 right-2">
+          <Avatar imageSrc="" :isOnline="false"/>
         </div>
       </div>
     </div>
