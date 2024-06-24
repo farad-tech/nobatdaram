@@ -5,6 +5,7 @@ import VerifyCode from '@/views/Auth/VerifyCode.vue'
 import ResetPassword from '@/views/Auth/ResetPassword.vue'
 import Profile from '@/views/Panel/Profile.vue'
 import ProfileEdit from '@/views/Panel/ProfileEdit.vue'
+import Search from '@/views/Panel/Search.vue'
 import GetAppointment from '@/views/Panel/GetAppointment.vue'
 
 const router = createRouter({
@@ -43,6 +44,11 @@ const router = createRouter({
       path: '/edit-profile',
       name: 'edit-profile',
       component: ProfileEdit
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: Search,
     },
     {
       path: '/get-appointment',

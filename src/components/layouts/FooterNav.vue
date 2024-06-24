@@ -9,7 +9,7 @@ const links = [
     icon: UserCircleIcon
   },
   {
-    name: 'get-appointment',
+    name: 'search',
     icon: CalendarDaysIcon
   },
 ];

@@ -4,6 +4,7 @@ import Button from '@/components/form/Button.vue'
 import HeaderNav from '@/components/layouts/HeaderNav.vue'
 import FooterNav from '@/components/layouts/FooterNav.vue'
 import Avatar from '@/components/elements/Avatar.vue'
+import Return from '@/components/elements/Return.vue'
 import { ref } from 'vue';
 import { TrashIcon, ArrowLongLeftIcon } from '@heroicons/vue/24/solid';
 
@@ -67,9 +68,7 @@ const formSubmit = () => {
   <div class=" min-h-screen">
     <HeaderNav />
 
-    <router-link :to="{ name: 'profile' }" class="flex items-center">
-      <ArrowLongLeftIcon class="w-6 h-6 me-1" /> Back to profile
-    </router-link>
+    <Return to="profile">Back to profile</Return>
 
     <h1>Edit profile</h1>
 

@@ -4,8 +4,9 @@ import FooterNav from '@/components/layouts/FooterNav.vue'
 import ProfileHeader from '@/components/layouts/ProfileHeader.vue'
 import ButtonSubmit from '@/components/form/Button.vue'
 import ButtonDanger from '@/components/form/ButtonDanger.vue'
+import Return from '@/components/elements/Return.vue'
 import { ref } from 'vue';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/solid';
+import { ChevronRightIcon, ChevronLeftIcon, CheckIcon } from '@heroicons/vue/24/solid';
 
 const date = new Date();
 const selectedSlot = ref(null);
@@ -28,10 +29,19 @@ const clear = () => {
   <div class=" min-h-screen">
     <HeaderNav />
 
+
+    <Return to="search">Back to search</Return>
+
+
     <ProfileHeader />
 
     <div class="my-10 text-center">
       <p>Get Appointment</p>
+
+      <div role="alert" class="alert alert-success my-5">
+        <CheckIcon class="w-6 h-6" />
+        <span>The appointment arranged</span>
+      </div>
 
       <div class="flex justify-between items-center my-10">
         <button class="btn btn-sm">
@@ -50,20 +60,18 @@ const clear = () => {
         </button>
       </div>
 
-      <!-- <span class="loading loading-spinner loading-lg mb-5"></span> -->
-
-
       <div class="flex flex-wrap mb-5">
 
-        <!-- <div v-for="i in 12" class="p-1 w-4/12">
+        <div v-for="i in 12" class="p-1 w-4/12">
           <div class="skeleton h-12 w-full"></div>
-        </div> -->
+        </div>
 
         <div v-for="i in 12" class=" w-4/12 p-1">
           <div class="form-control">
             <label class="label cursor-pointer btn justify-around">
               <span class="text-sm font-normal">09 - 09:30</span>
-              <input v-model="selectedSlot" type="radio" name="radio-10" class="radio radio-xs checked:bg-blue-300" :value="i"/>
+              <input v-model="selectedSlot" type="radio" name="radio-10" class="radio radio-xs checked:bg-blue-300"
+                :value="i" />
             </label>
           </div>
         </div>
