@@ -8,4 +8,8 @@
   * {
     font-family: "Montserrat", sans-serif;
   }
+
+  body {
+    @apply p-2;
+  }
 }
