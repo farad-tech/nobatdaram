@@ -59,14 +59,12 @@ function formSubmit() {
     .post('auth/login-register', {phoneoremail, password})
     .then((response) => {
 
-      // console.log(response.data)
       Cookies.set('auth-token', response.data, { expires: 14 });
       router.push({ name: 'profile'})
       loading.value = false;
 
     }).catch((error) => {
 
-      // console.log(error);
       loading.value = false;
       Toast.fire({
         'icon': 'error',
