@@ -2,10 +2,16 @@
 import { ref } from 'vue';
 import EmailOrPhoneInput from '@/components/form/EmailOrPhone.vue';
 import PasswordInput from '@/components/form/Password.vue';
+import baseAxios from '@/functions/baseAxios';
+import Cookies from 'js-cookie';
+import Toast from '@/functions/Toast';
+import Messages from '@/functions/Messages';
+import router from '@/router';
 
 const EmailOrPhone = ref(null);
 const Password = ref(null);
 const Errors = ref([]);
+const loading = ref(false);
 
 function assignError(errorObject) {
 
@@ -46,7 +52,27 @@ function formSubmit() {
     }
   }
 
-  alert('submit');
+  loading.value = true;
+  const phoneoremail = EmailOrPhone.value;
+  const password = Password.value;
+  baseAxios
+    .post('auth/login-register', {phoneoremail, password})
+    .then((response) => {
+
+      // console.log(response.data)
+      Cookies.set('auth-token', response.data, { expires: 14 });
+      router.push({ name: 'profile'})
+      loading.value = false;
+
+    }).catch((error) => {
+
+      // console.log(error);
+      loading.value = false;
+      Toast.fire({
+        'icon': 'error',
+        'title': Messages.invalid_login,
+      })
+    });
 }
 
 </script>
@@ -73,7 +99,9 @@ function formSubmit() {
           <!-- Login button -->
           <div class="text-center">
 
-            <button type="submit"
+            <span v-if="loading" class="loading loading-bars loading-sm"></span>
+
+            <button v-else type="submit"
               class="inline-block w-full rounded bg-primary px-7 pb-2 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
               data-twe-ripple-init data-twe-ripple-color="light">
               Login
