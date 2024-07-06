@@ -8,6 +8,8 @@ import ProfileEdit from '@/views/Panel/ProfileEdit.vue'
 import Search from '@/views/Panel/Search.vue'
 import GetAppointment from '@/views/Panel/GetAppointment.vue'
 
+import checkAuth from '@/functions/checkAuth';
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -38,22 +40,26 @@ const router = createRouter({
     {
       path: '/',
       name: 'profile',
-      component: Profile
+      component: Profile,
+      beforeEnter: checkAuth,
     },
     {
       path: '/edit-profile',
       name: 'edit-profile',
-      component: ProfileEdit
+      component: ProfileEdit,
+      beforeEnter: checkAuth,
     },
     {
       path: '/search',
       name: 'search',
       component: Search,
+      beforeEnter: checkAuth,
     },
     {
       path: '/get-appointment',
       name: 'get-appointment',
-      component: GetAppointment
+      component: GetAppointment,
+      beforeEnter: checkAuth,
     },
     
   ]

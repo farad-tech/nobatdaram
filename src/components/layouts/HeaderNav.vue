@@ -1,24 +1,30 @@
 <script setup>
+import messages from '@/functions/Messages';
+import Toast from '@/functions/Toast';
+import router from '@/router';
 import { ArrowLeftStartOnRectangleIcon } from '@heroicons/vue/24/outline';
+import Cookies from 'js-cookie';
 import Swal from 'sweetalert2'
 
 const logout = () => {
 
   Swal.fire({
     title: "Are you sure?",
-    text: "You are about to cancel appointment.",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!"
+    confirmButtonText: "Yes, log out!"
   }).then((result) => {
+
     if (result.isConfirmed) {
-      Swal.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
-        icon: "success"
-      });
+
+      Cookies.remove('auth-token')
+      Toast.fire({
+        'icon': 'info',
+        'title': messages.successful_logout,
+      })
+      router.push({name: 'login'})
     }
   });
 
