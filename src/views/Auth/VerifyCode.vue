@@ -3,12 +3,18 @@ import { ArrowLongRightIcon } from '@heroicons/vue/24/solid'
 import VerifyCodeInput from '@/components/form/VerifyCode.vue'
 import { ref } from 'vue'
 import resendVerifyCode from '@/functions/resendVerifyCode';
+import baseAxios from '@/functions/baseAxios';
+import apiConfig from '@/functions/apiConfig';
+import Toast from '@/functions/Toast';
+import messages from '@/functions/Messages';
+import router from '@/router';
 
 const timerBaseNumber = 120;
 const VerifyCode = ref(null);
 const Errors = ref([]);
 const timer = ref(timerBaseNumber);
 const timeInterval = ref();
+const loading = ref(false);
 
 function assignError(errorObject) {
 
@@ -43,7 +49,28 @@ const formSubmit = () => {
     }
   }
 
-  alert('submit');
+  loading.value = true;
+
+  baseAxios.post('check-code', {code: VerifyCode.value}, apiConfig()).then((success) => {
+    loading.value = false;
+
+    Toast.fire({
+      icon: 'success',
+      text: messages.account_verified,
+    })
+
+    router.push({name: 'profile'});
+
+  }).catch((fail) => {
+    loading.value = false;
+
+    Toast.fire({
+      icon: "error",
+      text: messages.invalid_entries,
+    })
+
+  })
+
 }
 
 const resendVerifyCodeAndSetTimeout = (to) => {
@@ -99,7 +126,11 @@ VerifyCodeInterval()
           <!-- Login button -->
           <div class="text-center lg:text-left">
 
-            <button type="submit"
+          
+
+            <span v-if="loading" class="loading loading-bars loading-sm"></span>
+
+            <button v-else type="submit"
               class="inline-block w-full rounded bg-primary px-7 pb-2 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
               data-twe-ripple-init data-twe-ripple-color="light">
               Verify code
