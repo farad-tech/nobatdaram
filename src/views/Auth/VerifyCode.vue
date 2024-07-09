@@ -9,7 +9,7 @@ import Toast from '@/functions/Toast';
 import messages from '@/functions/Messages';
 import router from '@/router';
 
-const timerBaseNumber = 120;
+const timerBaseNumber = 140;
 const VerifyCode = ref(null);
 const Errors = ref([]);
 const timer = ref(timerBaseNumber);
@@ -73,9 +73,9 @@ const formSubmit = () => {
 
 }
 
-const resendVerifyCodeAndSetTimeout = (to) => {
+const resendVerifyCodeAndSetTimeout = () => {
 
-  resendVerifyCode(to);
+  resendVerifyCode();
 
   VerifyCodeInterval()
 }
@@ -90,7 +90,7 @@ const VerifyCodeInterval = () => {
     }
   }, 1000);
 }
-VerifyCodeInterval()
+VerifyCodeInterval();
 
 
 </script>
