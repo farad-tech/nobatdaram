@@ -8,6 +8,9 @@ import apiConfig from '@/functions/apiConfig';
 import Toast from '@/functions/Toast';
 import messages from '@/functions/Messages';
 import router from '@/router';
+import { useRoute } from 'vue-router';
+import Cookies from 'js-cookie';
+import resendPasswordVerifyCode from '@/functions/resendPasswordVerifyCode';
 
 const timerBaseNumber = 140;
 const VerifyCode = ref(null);
@@ -15,6 +18,7 @@ const Errors = ref([]);
 const timer = ref(timerBaseNumber);
 const timeInterval = ref();
 const loading = ref(false);
+const route = ref(useRoute());
 
 function assignError(errorObject) {
 
@@ -51,19 +55,39 @@ const formSubmit = () => {
 
   loading.value = true;
 
-  baseAxios.post('check-code', {code: VerifyCode.value}, apiConfig()).then((success) => {
+  let url = 'check-code';
+  let data = { code: VerifyCode.value }
+
+  if (route.value.query.toResetPassword) {
+    url = 'auth/get-reset-password-permission'
+    data = { code: VerifyCode.value, phoneoremail: route.value.query.phoneoremail }
+  }
+
+  baseAxios.post(url, data, apiConfig()).then((success) => {
     loading.value = false;
 
-    Toast.fire({
-      icon: 'success',
-      text: messages.account_verified,
-    })
 
-    router.push({name: 'profile'});
+    if (route.value.query.toResetPassword) {
+
+      Cookies.set('reset-password-token', success.data)
+      Cookies.set('reset-password-phoneoremail', route.value.query.phoneoremail)
+
+      router.push({ name: 'reset-password' });
+
+    } else {
+
+      Toast.fire({
+        icon: 'success',
+        text: messages.account_verified,
+      })
+      router.push({ name: 'profile' });
+
+    }
+
 
   }).catch((fail) => {
     loading.value = false;
-
+    console.log(fail);
     Toast.fire({
       icon: "error",
       text: messages.invalid_entries,
@@ -75,7 +99,12 @@ const formSubmit = () => {
 
 const resendVerifyCodeAndSetTimeout = () => {
 
-  resendVerifyCode();
+  
+  if (route.value.query.toResetPassword) {
+    resendPasswordVerifyCode(route.value.query.phoneoremail)
+  } else {
+    resendVerifyCode();
+  }
 
   VerifyCodeInterval()
 }
@@ -112,21 +141,21 @@ VerifyCodeInterval();
             <button v-show="timer <= 0" type="button"
               @click="resendVerifyCodeAndSetTimeout('farhadkarami@yahoo.com')">Resend code</button>
 
-              <div v-show="timer > 0">
+            <div v-show="timer > 0">
 
-                <span>0{{  Math.floor(timer / 60) }}</span>
-                <span class="mx-1">:</span>
-                <span v-if="(timer % 60) < 10">0</span>
-                <span>{{ (timer % 60) }}</span>
+              <span>0{{ Math.floor(timer / 60) }}</span>
+              <span class="mx-1">:</span>
+              <span v-if="(timer % 60) < 10">0</span>
+              <span>{{ (timer % 60) }}</span>
 
-              </div>
+            </div>
 
           </div>
 
           <!-- Login button -->
           <div class="text-center lg:text-left">
 
-          
+
 
             <span v-if="loading" class="loading loading-bars loading-sm"></span>
 
@@ -136,13 +165,14 @@ VerifyCodeInterval();
               Verify code
             </button>
 
-            <p class="mb-0 mt-2 pt-1 text-sm font-semibold">
+            <p v-if="route.query.toResetPassword" class="mb-0 mt-2 pt-1 text-sm font-semibold">
               <router-link :to="{ name: 'forget-password' }"
                 class="text-danger flex justify-center transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700 items-center">Back
                 to forget password page
                 <ArrowLongRightIcon class=" w-6 mx-1" />
               </router-link>
             </p>
+
           </div>
         </form>
 

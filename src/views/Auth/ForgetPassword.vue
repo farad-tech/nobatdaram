@@ -3,9 +3,13 @@ import { ArrowLongRightIcon } from '@heroicons/vue/24/solid'
 import EmailOrPhoneInput from '@/components/form/EmailOrPhone.vue'
 import { ref } from 'vue'
 import router from '@/router';
+import baseAxios from '@/functions/baseAxios';
+import Toast from '@/functions/Toast';
+import messages from '@/functions/Messages';
 
 const EmailOrPhone = ref(null);
 const Errors = ref([]);
+const loading = ref(false);
 
 function assignError(errorObject) {
 
@@ -39,7 +43,43 @@ const formSubmit = () => {
     }
   }
 
-  router.push({name: 'verify-code'});
+  loading.value = true;
+  const phoneoremail = EmailOrPhone.value;
+
+  baseAxios.post('auth/get-reset-password-code', { phoneoremail })
+    .then((success) => {
+
+      loading.value = false;
+
+      Toast.fire({
+        icon: 'success',
+        text: messages.code_sent,
+      });
+
+      router.push({ name: 'verify-code', query: {'toResetPassword': true, 'phoneoremail': phoneoremail} });
+
+    })
+    .catch((error) => {
+
+      loading.value = false;
+
+      if (error.response.status == 404) {
+        Toast.fire({
+          icon: 'error',
+          text: messages.user_not_found,
+        });
+
+      } else {
+
+        Toast.fire({
+          icon: 'error',
+          text: messages.error,
+        });
+        
+      }
+
+    });
+
 }
 
 </script>
@@ -57,9 +97,12 @@ const formSubmit = () => {
           <EmailOrPhoneInput v-model="EmailOrPhone" @getError="assignError" />
 
           <!-- Login button -->
-          <div class="text-center lg:text-left">
+          <div class="text-center">
 
-            <button type="submit"
+          
+            <span v-if="loading" class="loading loading-bars loading-sm"></span>
+
+            <button v-else type="submit"
               class="inline-block w-full rounded bg-primary px-7 pb-2 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
               data-twe-ripple-init data-twe-ripple-color="light">
               Get code

@@ -7,6 +7,7 @@ import Profile from '@/views/Panel/Profile.vue'
 import ProfileEdit from '@/views/Panel/ProfileEdit.vue'
 import Search from '@/views/Panel/Search.vue'
 import GetAppointment from '@/views/Panel/GetAppointment.vue'
+import checkResetPasswordPermission from '@/functions/checkResetPasswordPermission'
 
 import checkAuth from '@/functions/checkAuth';
 
@@ -33,7 +34,8 @@ const router = createRouter({
     {
       path: '/reset-password',
       name: 'reset-password',
-      component: ResetPassword
+      component: ResetPassword,
+      beforeEnter: checkResetPasswordPermission,
     },
 
     // Profile pages
