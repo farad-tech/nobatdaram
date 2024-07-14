@@ -8,8 +8,8 @@ const props = defineProps({
 
 const avatarSrc = ref();
 
-if(props.imageSrc) {
-  avatarSrc.value = props.imageSrc;
+if (props.imageSrc) {
+  avatarSrc.value = import.meta.env.VITE_APP_URL + props.imageSrc;
 } else {
   avatarSrc.value = 'https://static.vecteezy.com/system/resources/thumbnails/003/337/584/small/default-avatar-photo-placeholder-profile-icon-vector.jpg';
 }
@@ -17,7 +17,7 @@ if(props.imageSrc) {
 </script>
 
 <template>
-  <div class="avatar" :class="{'online': props.isOnline}">
+  <div class="avatar" :class="{ 'online': props.isOnline }">
     <div class="w-24 rounded-full">
       <img :src="avatarSrc" />
     </div>
