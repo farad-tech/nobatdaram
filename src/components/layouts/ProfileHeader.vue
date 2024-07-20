@@ -16,6 +16,8 @@ baseAxios
   .then((success) => {
     data.value = success.data;
     loaded.value = true;
+    localStorage.setItem('name', data.value.name)
+    localStorage.setItem('avatar', data.value.avatar)
   })
   .catch((fail) => {
     loaded.value = true;
