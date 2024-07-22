@@ -10,9 +10,18 @@ import messages from '@/functions/Messages';
 const editable = ref(true);
 const data = ref({});
 const loaded = ref(false);
+const props = defineProps({
+  id: String,
+})
+var url = ref('profile');
+
+if(props.id) {
+  url = ref(`profile/${props.id}`)
+  editable.value = false;
+}
 
 baseAxios
-  .get('profile', apiConfig())
+  .get(url.value, apiConfig())
   .then((success) => {
     data.value = success.data;
     loaded.value = true;
@@ -26,7 +35,6 @@ baseAxios
       text: messages.error,
     })
   })
-
 
 </script>
 
