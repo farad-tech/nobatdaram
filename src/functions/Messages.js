@@ -14,6 +14,8 @@ const messages = {
   'profile_updated': 'Profile updated successfuly',
   'avatar_deleted': 'Avatar deleted successfuly',
   'appointment_set': 'Appointment set successfuly',
+  'appointment_canceled': 'Appointment canceled successfuly',
+  'empty_list': 'List is empty',
 };
 
 export default messages;
