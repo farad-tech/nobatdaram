@@ -1,41 +1,5 @@
-# vue
+# Appointment web application (Vuejs 3 Frontend)
+This is one of my projects that I uploaded on Github for who may be interseted. This repo is frontend of project. you can find backend (Laravel 10) at: [Appointment Laravel 10 Repo](https://github.com/farad-tech/nobatdaram-api)
 
-This template should help get you started developing with Vue 3 in Vite.
+All two sides of backend and frontend are developed by my own. Be comfortable to explore and read.
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
